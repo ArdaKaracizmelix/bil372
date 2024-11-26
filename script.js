@@ -31,12 +31,15 @@ document.getElementById('login-form')?.addEventListener('submit', function (even
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
 
-    if (email === "test@example.com" && password === "123456") {
-        alert("Login successful!");
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (user) {
+        alert(`Login successful! Welcome ${user.firstName} ${user.lastName}`);
         window.location.href = "./index.html";
     } else {
         alert("Invalid email or password.");
     }
+  
 });
 
 
@@ -152,7 +155,61 @@ const submitOrder = () => {
         updateOrder();
     }
 };
+const users = JSON.parse(localStorage.getItem('users')) || [];
 
+// Kayıt formu submit eventi
+document.getElementById('signup-form')?.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Form verilerini al
+    const firstName = document.getElementById('first-name').value.trim();
+    const lastName = document.getElementById('last-name').value.trim();
+    const email = document.getElementById('new-email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const province = document.getElementById('province').value.trim();
+    const district = document.getElementById('district').value.trim();
+    const neighborhood = document.getElementById('neighborhood').value.trim();
+    const apartmentNumber = document.getElementById('apartment-number').value.trim();
+    const doorNumber = document.getElementById('door-number').value.trim();
+    const password = document.getElementById('new-password').value.trim();
+    const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+    // Şifrelerin eşleşip eşleşmediğini kontrol et
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // Aynı e-posta adresi ile kayıt yapılmış mı?
+    if (users.find(user => user.email === email)) {
+        alert("User already exists. Please log in.");
+        return;
+    }
+
+    // Yeni kullanıcı oluştur
+    const newUser = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address: {
+            province,
+            district,
+            neighborhood,
+            apartmentNumber,
+            doorNumber,
+        },
+        password,
+    };
+
+    // Kullanıcıyı ekle ve localStorage'a kaydet
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    alert("Sign up successful! You can now log in.");
+
+    // Login sayfasına yönlendir
+    window.location.href = "login.html";
+});
 document.getElementById('back-to-restaurants').addEventListener('click', () => {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('restaurants').style.display = 'block';
