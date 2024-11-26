@@ -77,7 +77,7 @@ const loadMenu = (restaurantId) => {
         `;
         menuContainer.appendChild(div);
     });
-};
+}
 
 Order = (itemId) => {
     const menuItems = Object.values(menus).flat();
@@ -85,7 +85,6 @@ Order = (itemId) => {
     order.push(item);
     updateOrder();
 };
-
 const updateOrder = () => {
     const orderList = document.getElementById('order-list');
     orderList.innerHTML = '';
@@ -102,6 +101,7 @@ const updateOrder = () => {
         `;
         orderList.appendChild(li);
     });
+
     const totalElement = document.createElement('li');
     totalElement.className = 'total-price';
     totalElement.innerHTML = `<strong>Total: $${totalPrice.toFixed(2)}</strong>`;
@@ -110,21 +110,35 @@ const updateOrder = () => {
 const addToOrder = (itemId) => {
     const menuItems = Object.values(menus).flat();
     const item = menuItems.find((menuItem) => menuItem.id === itemId);
+
+    if (order.length > 0) {
+        const currentRestaurantName = restaurants.find(r => r.id === currentRestaurantId).name;
+        const existingRestaurantName = restaurants.find(r => r.id === order[0].restaurantId).name;
+
+        if (currentRestaurantName !== existingRestaurantName) {
+            alert("You cannot order from multiple restaurants at the same time!");
+            return;
+        }
+    }
+
+    // Aynı üründen varsa miktarı artır
     const existingItem = order.find((orderItem) => orderItem.id === itemId);
     if (existingItem) {
         existingItem.quantity++;
     } else {
-        order.push({ ...item, quantity: 1 });
+        // Ürünü sepete ekle ve restoran ID'sini takip et
+        order.push({ ...item, quantity: 1, restaurantId: currentRestaurantId });
     }
     updateOrder();
 };
+
 const removeFromOrder = (itemId) => {
     const index = order.findIndex((item) => item.id === itemId);
     if (index !== -1) {
         if (order[index].quantity > 1) {
             order[index].quantity--;
         } else {
-            order.splice(index, 1); 
+            order.splice(index, 1);
         }
         updateOrder();
     }
