@@ -118,3 +118,26 @@ button:hover {
     border-radius: 8px;
     margin-bottom: 0.5rem;
 }
+
+.remove-button {
+    background-color: #3f3fff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.remove-button:hover {
+    background-color: #3f3fff;
+}
+
+.total-price {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+}
+

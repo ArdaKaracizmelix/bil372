@@ -89,24 +89,60 @@ Order = (itemId) => {
 const updateOrder = () => {
     const orderList = document.getElementById('order-list');
     orderList.innerHTML = '';
-    order.forEach((item, index) => {
+    let totalPrice = 0;
+
+    order.forEach((item) => {
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+
         const li = document.createElement('li');
-        li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        li.innerHTML = `
+            ${item.name} x${item.quantity} - $${itemTotal.toFixed(2)}
+            <button class="remove-button" onclick="removeFromOrder(${item.id})">-</button>
+        `;
         orderList.appendChild(li);
     });
+    const totalElement = document.createElement('li');
+    totalElement.className = 'total-price';
+    totalElement.innerHTML = `<strong>Total: $${totalPrice.toFixed(2)}</strong>`;
+    orderList.appendChild(totalElement);
 };
-
-const submitOrder = () => {
-    alert("Order submitted successfully!");
-    order = [];
+const addToOrder = (itemId) => {
+    const menuItems = Object.values(menus).flat();
+    const item = menuItems.find((menuItem) => menuItem.id === itemId);
+    const existingItem = order.find((orderItem) => orderItem.id === itemId);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        order.push({ ...item, quantity: 1 });
+    }
     updateOrder();
 };
+const removeFromOrder = (itemId) => {
+    const index = order.findIndex((item) => item.id === itemId);
+    if (index !== -1) {
+        if (order[index].quantity > 1) {
+            order[index].quantity--;
+        } else {
+            order.splice(index, 1); 
+        }
+        updateOrder();
+    }
+};
+const submitOrder = () => {
+    if (order.length === 0) {
+        alert("Your order is empty!");
+    } else {
+        alert("Order submitted successfully!");
+        order = [];
+        updateOrder();
+    }
+};
 
-document.getElementById('back-to-restaurants')?.addEventListener('click', () => {
+document.getElementById('back-to-restaurants').addEventListener('click', () => {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('restaurants').style.display = 'block';
 });
-
 window.onload = () => {
     loadRestaurants();
 };
