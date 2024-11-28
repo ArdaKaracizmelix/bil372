@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Profile</h1>
+    </header>
+    <main>
+        <!-- Kullanıcı Bilgileri -->
+        <section id="account">
+            <h2>Account Details</h2>    <!-- buraların hepsi ornek db'den eklenecek bu kısımlar-->
+            <p><strong>First Name:</strong> John</p>
+            <p><strong>Last Name:</strong> Doe</p>
+            <p><strong>Phone:</strong> +1 234 567 890</p>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+        </section>
+
+        <!-- Şifre Değişikliği -->
+        <section id="password-change">
+            <h2>Change Password</h2>
+            <form id="change-password-form">
+                <label for="old-password">Old Password:</label>
+                <input type="password" id="old-password" required>
+                <br>
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" required>
+                <br>
+                <button type="submit">Save</button>
+            </form>
+        </section>
+
+        <!-- Kart Bilgileri -->
+        <section id="cards">
+            <h2>My Cards</h2>
+            <ul id="card-list">
+                <li>
+                    Card Ending in 1234
+                    <button class="delete-card">Delete</button>
+                </li>
+                <li>
+                    Card Ending in 5678
+                    <button class="delete-card">Delete</button>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Hesabı Sil -->
+        <section id="delete-account">
+            <h2>Delete Account</h2>
+            <button id="delete-account-button">Delete My Account</button>
+        </section>
+    </main>
+
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -217,3 +217,39 @@ document.getElementById('back-to-restaurants').addEventListener('click', () => {
 window.onload = () => {
     loadRestaurants();
 };
+
+// Order button click event
+document.getElementById('submit-order').addEventListener('click', function() {
+    var selectedItems = getOrderItems(); // Sipariş edilen öğeleri al
+
+    // Sipariş öğelerinin bir nesne listesi olarak hazırlanması
+    var orderItems = selectedItems.map(item => {
+        return {
+            name: item.name,
+            quantity: item.quantity
+        };
+    });
+
+    // Sipariş verilerini URL parametreleri olarak iletmek
+    var url = "cart.html?order=" + encodeURIComponent(JSON.stringify(orderItems));
+
+    // Cart.html sayfasına yönlendirme
+    window.location.href = url;
+});
+
+// Order items'ları almak için örnek bir fonksiyon
+function getOrderItems() {
+    var orderItems = [];
+    var orderList = document.getElementById('order-list').children;
+
+    for (var i = 0; i < orderList.length; i++) {
+        var item = orderList[i].textContent;
+        var name = item.split(' ')[0]; // İlk kelimeyi ismen kabul edelim
+        var quantity = parseInt(item.split(' ')[1] || 1); // Eğer miktar belirtilmemişse 1 kabul et
+
+        orderItems.push({ name: name, quantity: quantity }); // Listeye ekle
+    }
+    
+
+    return orderItems;
+}

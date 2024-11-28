@@ -1,0 +1,81 @@
+<!-- Cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+    
+    <main>
+        <section id="user-info">
+            <h2>User Information</h2>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+        </section>
+
+        <section id="order-summary">
+            <h2>Order Summary</h2>
+            <ul id="order-items-list"></ul>
+        </section>
+
+        <section id="delivery-options">
+            <h2>Delivery Options</h2>
+            <select id="delivery-type">
+                <option value="immediate">Immediate Delivery</option>
+                <option value="later">Later Delivery</option>
+            </select>
+        </section>
+
+        <section id="payment-options">
+            <h2>Payment Options</h2>
+            <select id="payment-method">
+                <option value="credit-card">Credit Card</option>
+                <option value="cash">Cash on Delivery</option>
+            </select>
+
+            <div id="credit-card-info" style="display:none;">
+                <label for="credit-card-number">Credit Card Number:</label>
+                <input type="text" id="credit-card-number" placeholder="Enter your card number">
+                <button id="add-credit-card">Add Card</button>
+            </div>
+        </section>
+
+        <button id="place-order">Place Order</button>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Cart sayfasında gelen URL parametrelerini alalım
+        window.onload = function() {
+            // URL'den order parametresini al
+            var urlParams = new URLSearchParams(window.location.search);
+            var orderData = JSON.parse(decodeURIComponent(urlParams.get('order')));
+
+            // Order item'ları listesine ekle
+            var orderList = document.getElementById('order-items-list');
+            orderData.forEach(function(item) {
+                var listItem = document.createElement('li');
+                listItem.textContent = `${item.name} ${item.quantity}`; // Ad ve miktar formatında göster
+                orderList.appendChild(listItem);
+            });
+
+            // Ödeme yöntemi seçimi için event listener ekle
+            document.getElementById('payment-method').addEventListener('change', function() {
+                var paymentMethod = this.value;
+                if (paymentMethod === 'credit-card') {
+                    document.getElementById('credit-card-info').style.display = 'block';
+                } else {
+                    document.getElementById('credit-card-info').style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+</html>
