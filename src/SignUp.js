@@ -25,7 +25,7 @@ const SignUp = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ea7125',
+        backgroundColor: '#FF6F61',
       }}
     >
       <Box
@@ -71,7 +71,7 @@ const SignUp = () => {
           fullWidth
           variant="contained"
           color="primary"
-          sx={{ marginTop: 2 , backgroundColor: '#ea7125' }}
+          sx={{ marginTop: 2 , backgroundColor: '#FF6F61' }}
           onClick={handleSignUp}
         >
           Sign Up

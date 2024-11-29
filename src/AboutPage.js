@@ -36,7 +36,7 @@ const AboutPage = () => {
           width: '60%',
           maxWidth: 300,
           height: '60px',
-          backgroundColor: darkMode ? '#333' : '#B8B8F7',
+          backgroundColor: darkMode ? '#333' : '#FF6F61',
           display: 'flex',
           justifyContent: 'space-between', // Eşit aralık için bu özellik
           alignItems: 'center',
@@ -102,6 +102,7 @@ const AboutPage = () => {
           </IconButton>
         </Box>
       </Box>
+    
       {/* Logo */}
       <Box
         component="img"
@@ -109,15 +110,16 @@ const AboutPage = () => {
         alt="Logo"
         sx={{
           position: 'absolute',
-          top: 20,
-          left: 20,
-          width: 150,
+          top: 10,
+          left: 40,
+          width: 80,
           height: 'auto',
           filter: darkMode ? 'invert(1)' : 'none',
         }}
-        onClick={() => navigate('/')}
+        onClick={() => {
+          window.location.href = "/";
+        }}
       />
-
       {/* Login and Signup Buttons */}
       <Box
         sx={{
@@ -133,10 +135,10 @@ const AboutPage = () => {
             sx={{
               fontWeight: 'bold',
               fontSize: '1rem',
-              backgroundColor: darkMode ? '#555' : '#B8B8F7',
+              backgroundColor: darkMode ? '#555' : '#FF6F61',
               color: '#fff',
               '&:hover': {
-                backgroundColor: darkMode ? '#666' : '#B8B8F7',
+                backgroundColor: darkMode ? '#666' : '#FF6F61',
               },
               width: '60%',
               maxWidth: 900,
@@ -152,10 +154,10 @@ const AboutPage = () => {
           sx={{
             fontWeight: 'bold',
             fontSize: '1rem',
-            backgroundColor: darkMode ? '#555' : '#B8B8F7',
+            backgroundColor: darkMode ? '#555' : '#FF6F61',
             color: '#fff',
             '&:hover': {
-              backgroundColor: darkMode ? '#666' : '#B8B8F7',
+              backgroundColor: darkMode ? '#666' : '#FF6F61',
             },
             width: '60%',
           maxWidth: 900,
@@ -195,11 +197,11 @@ const AboutPage = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: darkMode ? '#333' : '#B8B8F7',
+          backgroundColor: darkMode ? '#333' : '#FF6F61',
         }}
       >
         <Typography variant="body2" sx={{ color: darkMode ? '#f5f5f5' : '#fff' }}>
-          © 2024 Vault. All rights reserved.
+          © 2024 Bring. All rights reserved.
         </Typography>
       </Box>
     </Box>

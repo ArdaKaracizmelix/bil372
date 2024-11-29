@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import logo from './assets/logoreal.jpg';   //logo pathi buradan degisecek daha sonra.
+import logo from './assets/logo.png';   //logo pathi buradan degisecek daha sonra.
 import rightImage from './assets/foto.png'; 
 
 const Login = () => {
@@ -44,7 +44,7 @@ const Login = () => {
           src={logo}
           alt="Logo"
           sx={{
-            width: 200,
+            width: 175,
             height: 'auto',
             marginBottom: 1,
           }}
@@ -81,10 +81,10 @@ const Login = () => {
           sx={{
             marginTop: 2,
             height: 50,
-            backgroundColor: '#ea7125',
+            backgroundColor: '#FF6F61',
             color: '#fff',
             '&:hover': {
-              backgroundColor: '#d60909',
+              backgroundColor: '#FF6F61',
             },
           }}
           onClick={handleLogin}
@@ -120,7 +120,7 @@ const Login = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                backgroundColor: '#ea7125',
+                backgroundColor: '#FF6F61',
                 padding: 2,
                 borderRadius: 5,
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
@@ -178,43 +178,10 @@ const Login = () => {
             </Box>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* Sağ Resim Kutusu */}
       <Box
         sx={{
-          width: '55%',
+          width: '50%',
           backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 1) 5%, rgba(255, 255, 255, 0) 15%), url(${rightImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',

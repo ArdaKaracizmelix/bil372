@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { DarkMode, LightMode } from '@mui/icons-material';
-import logo from './assets/logo.png';
-import visa from './assets/visa.png';
-import mastercard from './assets/mastercard.png';
-import discover from './assets/discover.png';
-import paypal from './assets/paypal.png';
-import applePay from './assets/applepay.png';
-import troy from './assets/troy.png';
-import slide1 from './assets/slide1.png';
-import slide2 from './assets/slide2.png';
-import slide3 from './assets/slide3.jpg';
-import LoginIcon from '@mui/icons-material/Login';
+  import logo from './assets/logo.png';
+  import appstore from './assets/appstore.png';
+  import googleplay from './assets/googleplay.png';
+  import huawei from './assets/huawei.png';
+  import slide1 from './assets/slide1.jpg';
+  import slide2 from './assets/slide2.png';
+  import slide3 from './assets/slide3.jpg';
+  import X from './assets/X.png';
+  import fbook from './assets/fbook.png';
+  import LoginIcon from '@mui/icons-material/Login';
+  import insta from './assets/insta.png';
 const LandingPage = () => {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(false);
@@ -54,7 +54,7 @@ const LandingPage = () => {
     width: '60%',
     maxWidth: 300,
     height: '60px',
-    backgroundColor: darkMode ? '#333' : '#B8B8F7',
+    backgroundColor: darkMode ? '#333' : '#FF6F61',
     display: 'flex',
     justifyContent: 'space-between', // Eşit aralık için bu özellik
     alignItems: 'center',
@@ -128,9 +128,9 @@ const LandingPage = () => {
         alt="Logo"
         sx={{
           position: 'absolute',
-          top: 20,
-          left: 20,
-          width: 150,
+          top: 10,
+          left: 40,
+          width: 80,
           height: 'auto',
           filter: darkMode ? 'invert(1)' : 'none',
         }}
@@ -154,10 +154,10 @@ const LandingPage = () => {
             sx={{
               fontWeight: 'bold',
               fontSize: '1rem',
-              backgroundColor: darkMode ? '#555' : '#B8B8F7',
+              backgroundColor: darkMode ? '#555' : '#FF6F61',
               color: '#fff',
               '&:hover': {
-                backgroundColor: darkMode ? '#666' : '#B8B8F7',
+                backgroundColor: darkMode ? '#666' : '#FF6F61',
               },
               width: '60%',
               maxWidth: 900,
@@ -174,10 +174,10 @@ const LandingPage = () => {
           sx={{
             fontWeight: 'bold',
             fontSize: '1rem',
-            backgroundColor: darkMode ? '#555' : '#B8B8F7',
+            backgroundColor: darkMode ? '#555' : '#FF6F61',
             color: '#fff',
             '&:hover': {
-              backgroundColor: darkMode ? '#666' : '#B8B8F7',
+              backgroundColor: darkMode ? '#666' : '#FF6F61',
             },
             width: '60%',
           maxWidth: 900,
@@ -219,7 +219,7 @@ const LandingPage = () => {
               marginBottom: 3,
             }}
           >
-            Why Vault?
+            Why Bring?
           </Typography>
           <Typography
             variant="body1"
@@ -229,7 +229,8 @@ const LandingPage = () => {
               fontSize: '1.2rem',
             }}
           >
-            Vault is your trusted partner for secure, efficient, and customer-focused banking solutions. Discover a better way to manage your finances with Vault.
+           Why Bring?
+           Bring is your go-to platform for secure, seamless, and customer-first online food ordering. Experience a smarter, faster, and more enjoyable way to satisfy your cravings with Bring.
           </Typography>
         </Box>
 
@@ -259,36 +260,132 @@ const LandingPage = () => {
       </Box>
 
 
-      {/* Footer */}
+  {/* Footer */}
+<Box
+  sx={{
+    width: '100%',
+    padding: '31px 0',
+    display: 'flex',
+    justifyContent: 'space-between', // İki tarafı birbirinden ayırır
+    alignItems: 'center',
+    backgroundColor: darkMode ? '#333' : '#FF6F61',
+    borderRadius: '0 0 12px 12px',
+  }}
+>
+  {/* Sol Kısım - Uygulama İndirme */}
+  <Box
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 2,
+      paddingLeft: '20px', // Sol kenardan biraz içeri almak için
+    }}
+  >
+    <Typography
+      sx={{
+        fontSize: '1.2rem',
+        fontWeight: 'bold',
+        color: darkMode ? '#f5f5f5' : '#333',
+      }}
+    >
+      Don't Forget to Download Our App:
+    </Typography>
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 2, // İkonlar arası boşluk
+      }}
+    >
       <Box
+        component="img"
+        src={appstore}
+        alt="AppStore"
         sx={{
-          width: '100%',
-          padding: '31px 0',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: darkMode ? '#333' : '#B8B8F7',
+          width: '120px',
+          borderRadius: 4,
         }}
-      >
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(6, 1fr)',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: 10,
-            width: '80%',
-            maxWidth: '1200px',
-          }}
-        >
-         <Box component="img" src={visa} alt="Visa" sx={{ width: '90px' }} />
-          <Box component="img" src={mastercard} alt="Mastercard" sx={{ width: '90px' }} />
-          <Box component="img" src={discover} alt="Discover" sx={{ width: '90px' }} />
-          <Box component="img" src={paypal} alt="PayPal" sx={{ width: '90px' }} />
-          <Box component="img" src={applePay} alt="Apple Pay" sx={{ width: '90px' }} />
-          <Box component="img" src={troy} alt="Troy" sx={{ width: '90px' }} />
-        </Box>
-      </Box>
+      />
+      <Box
+        component="img"
+        src={googleplay}
+        alt="PlayStore"
+        sx={{
+          width: '120px',
+          borderRadius: 4,
+        }}
+      />
+      <Box
+        component="img"
+        src={huawei}
+        alt="Huawei"
+        sx={{
+          width: '120px',
+          borderRadius: 4,
+        }}
+      />
+    </Box>
+  </Box>
+
+  {/* Sağ Kısım - Sosyal Medya */}
+  <Box
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 2,
+      paddingRight: '100px', // Sağ kenardan biraz içeri almak için
+    }}
+  >
+    <Typography
+      sx={{
+        fontSize: '1.2rem',
+        fontWeight: 'bold',
+        color: darkMode ? '#f5f5f5' : '#333',
+      }}
+    >
+      Don't Forget to Follow Us:
+    </Typography>
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 2, // İkonlar arası boşluk
+      }}
+    >
+      <Box
+        component="img"
+        src={X}
+        alt="X"
+        sx={{
+          width: '60px',
+          height: '40px', // Eşit yükseklik ve genişlik
+          borderRadius: 4,
+        }}
+      />
+      <Box
+        component="img"
+        src={fbook}
+        alt="Facebook"
+        sx={{
+          width: '40px',
+          height: '40px', // Eşit yükseklik ve genişlik
+          borderRadius: 4,
+        }}
+      />
+      <Box
+        component="img"
+        src={insta}
+        alt="Instagram"
+        sx={{
+          width: '40px',
+          height: '40px', // Eşit yükseklik ve genişlik
+          borderRadius: 4,
+        }}
+      />
+    </Box>
+  </Box>
+</Box>
+
+        
+     
     </Box>
   );
 };

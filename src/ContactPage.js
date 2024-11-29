@@ -47,7 +47,7 @@ const ContactPage = () => {
               width: '60%',
               maxWidth: 300,
               height: '60px',
-              backgroundColor: darkMode ? '#333' : '#B8B8F7',
+              backgroundColor: darkMode ? '#333' : '#FF6F61',
               display: 'flex',
               justifyContent: 'space-between', // Eşit aralık için bu özellik
               alignItems: 'center',
@@ -114,21 +114,23 @@ const ContactPage = () => {
             </Box>
           </Box>
 
+     
       {/* Logo */}
       <Box
         component="img"
         src={logo}
         alt="Logo"
         sx={{
-          position: "absolute",
-          top: 20,
-          left: 20,
-          width: 150,
-          height: "auto",
-          filter: darkMode ? "invert(1)" : "none",
-          cursor: "pointer",
+          position: 'absolute',
+          top: 10,
+          left: 40,
+          width: 80,
+          height: 'auto',
+          filter: darkMode ? 'invert(1)' : 'none',
         }}
-        onClick={() => navigate("/")}
+        onClick={() => {
+          window.location.href = "/";
+        }}
       />
 
       {/* Login and Signup Buttons */}
@@ -146,10 +148,10 @@ const ContactPage = () => {
             sx={{
               fontWeight: 'bold',
               fontSize: '1rem',
-              backgroundColor: darkMode ? '#555' : '#B8B8F7',
+              backgroundColor: darkMode ? '#555' : '#FF6F61',
               color: '#fff',
               '&:hover': {
-                backgroundColor: darkMode ? '#666' : '#B8B8F7',
+                backgroundColor: darkMode ? '#666' : '#FF6F61',
               },
               width: '60%',
               maxWidth: 900,
@@ -165,10 +167,10 @@ const ContactPage = () => {
           sx={{
             fontWeight: 'bold',
             fontSize: '1rem',
-            backgroundColor: darkMode ? '#555' : '#B8B8F7',
+            backgroundColor: darkMode ? '#555' : '#FF6F61',
             color: '#fff',
             '&:hover': {
-              backgroundColor: darkMode ? '#666' : '#B8B8F7',
+              backgroundColor: darkMode ? '#666' : '#FF6F61',
             },
             width: '60%',
           maxWidth: 900,
@@ -201,7 +203,7 @@ const ContactPage = () => {
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2, marginBottom: 2 }}>
             <AlternateEmailSharpIcon />
-            <Typography variant="body1">support@vault.com</Typography>
+            <Typography variant="body1">support@bring.com</Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <PlaceIcon />
@@ -339,7 +341,7 @@ const ContactPage = () => {
     sx={{
       marginTop: 2,
       height: 50,
-      backgroundColor: darkMode ? "#666" : "#B8B8F7",
+      backgroundColor: darkMode ? "#666" : "#FF6F61",
       color: "#fff",
       "&:hover": {
         backgroundColor: darkMode ? "#777" : "#A5A5E6",
@@ -360,11 +362,11 @@ const ContactPage = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: darkMode ? '#333' : '#B8B8F7',
+          backgroundColor: darkMode ? '#333' : '#FF6F61',
         }}
       >
         <Typography variant="body2" sx={{ color: darkMode ? '#f5f5f5' : '#fff' }}>
-          © 2024 Vault. All rights reserved.
+          © 2024 Bring. All rights reserved.
         </Typography>
       </Box>
     </Box>
