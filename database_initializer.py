@@ -181,13 +181,13 @@ def populate_promotions():
     print_entries("Promotions")
 
 # Execute All
-#populate_restaurants()
-#populate_menus()
-#populate_customers()
-#populate_orders()
-#populate_delivery_locations()
-#populate_drivers()
-#populate_payments()
+populate_restaurants()
+populate_menus()
+populate_customers()
+populate_orders()
+populate_delivery_locations()
+populate_drivers()
+populate_payments()
 populate_promotions()
 
 connection.close()
