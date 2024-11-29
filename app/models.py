@@ -101,5 +101,6 @@ class Customers(db.Model):
     phone = db.Column(db.String(20), nullable=False)
     address = db.Column(db.String(200), nullable=False)
     location = db.Column(Geometry('POINT'), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     orders = db.relationship('Orders', backref='customer', lazy=True)
 

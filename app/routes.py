@@ -1,6 +1,10 @@
 from flask import Flask, request, jsonify, Blueprint
 from app.models import db, Restaurants, Menus, Promotions, Orders, Payments, DeliveryLocations, Drivers, Customers
 from sqlalchemy.exc import SQLAlchemyError
+from geoalchemy2.elements import WKBElement
+from geoalchemy2.functions import ST_AsText, ST_SetSRID
+from shapely.wkt import loads
+
 
 #app = Flask(__name__)
 #routes = Blueprint('routes', __name__)
@@ -66,6 +70,68 @@ def get_restaurant(id):
         }), 200
     except SQLAlchemyError as e:
         return jsonify({"error": str(e)}), 500
+
+
+# Add a new customer
+@routes.route('/customers', methods=['POST'])
+def add_customer():
+    try:
+        data = request.get_json()
+        new_customer = Customers(
+            customer_id=data['customer_id'],
+            name=data['name'],
+            email=data.get('email'),  # Optional
+            phone=data.get('phone'),  # Optional
+            address=data.get('address'),  # Optional
+            #location=data['location'],  # Ensure this is in the correct format (e.g., POINT(x y))
+            password=data['password']  # Password should ideally be hashed
+        )
+        db.session.add(new_customer)
+        db.session.commit()
+        return jsonify({"message": "Customer added successfully"}), 201
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
+
+# Get all customers
+@routes.route('/customers', methods=['GET'])
+def get_customers():
+    try:
+        customers = Customers.query.all()
+        return jsonify([{
+            'customer_id': c.customer_id,
+            'name': c.name,
+            'email': c.email,
+            'phone': c.phone,
+            'address': c.address,
+            # Convert location to a readable format (e.g., "POINT(lat lon)")
+            #'location': {
+            #    'longitude': loads(db.session.scalar(ST_AsText(ST_SetSRID(c.location, 4326)))).x,
+            #    'latitude': loads(db.session.scalar(ST_AsText(ST_SetSRID(c.location, 4326)))).y
+            #},
+            'password': c.password
+        } for c in customers]), 200
+    except SQLAlchemyError as e:
+        return jsonify({"error": str(e)}), 500
+
+# Get a specific customer by ID
+@routes.route('/customers/<int:id>', methods=['GET'])
+def get_customer(id):
+    try:
+        customer = Customers.query.get_or_404(id)
+        return jsonify({
+            #'id': customer.id,
+            'customer_id': customer.customer_id,
+            'name': customer.name,
+            'email': customer.email,
+            'phone': customer.phone,
+            'address': customer.address,
+            #'location': customer.location,  # Convert to a readable format if necessary
+            'password': customer.password  # Do not expose passwords in the response
+        }), 200
+    except SQLAlchemyError as e:
+        return jsonify({"error": str(e)}), 500
+
 
 # Add a new menu
 @routes.route('/menus', methods=['POST'])

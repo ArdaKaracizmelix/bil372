@@ -6,7 +6,7 @@ CREATE TABLE Restaurants (
     restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     address TEXT NOT NULL,
-    contact_number VARCHAR(15),
+    contact_number VARCHAR(20),
     rating DECIMAL(3, 2),
     opening_hours VARCHAR(50),
     delivery_area GEOMETRY NOT NULL
@@ -24,9 +24,10 @@ CREATE TABLE Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100),
-    phone VARCHAR(15),
+    phone VARCHAR(20),
     address TEXT,
     location POINT NOT NULL
+    password VARCHAR(255) NOT NULL -- To store a hashed password
 );
 
 CREATE TABLE Orders (
@@ -51,7 +52,7 @@ CREATE TABLE Delivery_Locations (
 CREATE TABLE Drivers (
     driver_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
-    contact VARCHAR(15),
+    contact VARCHAR(20),
     current_location POINT,
     availability_status ENUM('Available', 'Unavailable') DEFAULT 'Available',
     vehicle_details TEXT
